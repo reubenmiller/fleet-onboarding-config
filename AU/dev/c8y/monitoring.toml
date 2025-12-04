@@ -1,0 +1,12 @@
+url = "iot.latest.stage.c8y.io"
+device.cert_path = "/etc/tedge/device-certs/monitoring-certificate.pem"
+device.key_path = "/etc/tedge/device-certs/monitoring-private-key.pem"
+
+[proxy]
+bind.port = 8002
+
+[bridge]
+topic_prefix = "monitoring"
+
+# Note: bridge.include seems to be mandatory
+[bridge.include]
