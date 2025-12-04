@@ -138,14 +138,12 @@ register() {
 configure_main() {
     mkdir -p "/etc/tedge/mappers"
     curl -sSLf "https://raw.githubusercontent.com/reubenmiller/fleet-onboarding-config/refs/heads/main/${COUNTRY}/${ENV}/${TYPE}/main.toml" > "/etc/tedge/mappers/${TYPE}.toml"
-    tedge connect "$TYPE"
 }
 
 configure_named_profile() {
     NAME="$1"
     mkdir -p "/etc/tedge/mappers/${TYPE}.d/"
     curl -sSLf "https://raw.githubusercontent.com/reubenmiller/fleet-onboarding-config/refs/heads/main/${COUNTRY}/${ENV}/${TYPE}/${NAME}.toml" > "/etc/tedge/mappers/${TYPE}.d/${NAME}.toml"
-    tedge connect "$TYPE" --profile "$NAME"
 }
 
 configure_mapper() {
