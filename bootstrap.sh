@@ -24,6 +24,17 @@ FLAGS
   --device-id <name>        Device id. If leave blank then the tedge-identity will be used, or the hostname
   --one-time-password <code>    Optional one-time-password used for registration with Cumulocity. Defaults to a random password
 
+EXAMPLES
+
+wget -O - https://raw.githubusercontent.com/reubenmiller/fleet-onboarding-config/refs/heads/main/bootstrap.sh | sh -s -- --type c8y --env dev
+# Bootstrap the device with Cumulocity for the dev environment
+
+wget -O - https://raw.githubusercontent.com/reubenmiller/fleet-onboarding-config/refs/heads/main/bootstrap.sh | sh -s -- --type c8y --env staging
+# Bootstrap the device with Cumulocity for the staging environment
+
+wget -O - https://raw.githubusercontent.com/reubenmiller/fleet-onboarding-config/refs/heads/main/bootstrap.sh | sh -s -- --type c8y --env dev --profile monitoring
+# Bootstrap the device with Cumulocity using a secondary profile for monitoring
+
 EOT
 }
 
@@ -91,8 +102,9 @@ BEGIN{
 }
 
 is_enrolled() {
-    return 1
+    # TODO: How to check 
     # tedge cert show "$TYPE" >/dev/null 2>&1;
+    return 1
 }
 
 register() {
