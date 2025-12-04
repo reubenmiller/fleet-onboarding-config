@@ -1,0 +1,13 @@
+url = "iot.latest.stage.c8y.io"
+
+device.cert_path = "/etc/tedge/device-certs/staging-latest-certificate.pem"
+device.key_path = "/etc/tedge/device-certs/staging-latest-private-key.pem"
+
+[proxy]
+bind.port = 8002
+
+[bridge]
+topic_prefix = "staging-latest"
+
+# Note: bridge.include seems to be mandatory
+[bridge.include]
