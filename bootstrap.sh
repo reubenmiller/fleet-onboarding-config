@@ -102,20 +102,18 @@ register() {
     fi
 
     EXTRA_ARGS=
-    if [ "$PROFILE" = main ]; then
+    if [ "$PROFILE_NAME" = "main" ]; then
         EXTRA_ARGS="--profile $PROFILE_NAME"
         CONFIG_FILE="/etc/tedge/mappers/${TYPE}.toml"
     else
-        CONFIG_FILE="/etc/tedge/mappers/${TYPE}.d/${NAME}.toml"
+        CONFIG_FILE="/etc/tedge/mappers/${TYPE}.d/${PROFILE_NAME}.toml"
     fi
 
-    # if [ -n "$C8Y_URL" ]; then
-    #     # normalize the values
-    #     C8Y_URL=$(echo "$C8Y_URL" | sed 's|https?://||g')
-    #     tedge config set c8y.url "$C8Y_URL"
-    # fi
-    
-    # tedge cert create-csr --device-id "$DEVICE_ID"
+    if [ -n "$C8Y_URL" ]; then
+        # normalize the values
+        C8Y_URL=$(echo "$C8Y_URL" | sed 's|https?://||g')
+        tedge config set c8y.url "$C8Y_URL"
+    fi
 
     if [ -z "$DEVICE_ONE_TIME_PASSWORD" ]; then
         # User didn't provide a value, so generate a randomized code
