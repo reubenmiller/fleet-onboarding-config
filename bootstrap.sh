@@ -103,9 +103,9 @@ register() {
 
     EXTRA_ARGS=
     if [ "$PROFILE_NAME" = "main" ]; then
-        EXTRA_ARGS="--profile $PROFILE_NAME"
         CONFIG_FILE="/etc/tedge/mappers/${TYPE}.toml"
     else
+        EXTRA_ARGS="--profile $PROFILE_NAME"
         CONFIG_FILE="/etc/tedge/mappers/${TYPE}.d/${PROFILE_NAME}.toml"
     fi
 
